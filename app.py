@@ -7,6 +7,8 @@ from io import BytesIO
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import io
+from datetime import datetime
+from datetime import timedelta
 
 app = Flask(__name__)
 
@@ -17,7 +19,8 @@ stock_symbol_icici = 'ICICIBANK.NS'
 stock_symbol_hdfc = 'HDFCBANK.NS'
 stock_symbol_axis = 'AXISBANK.NS'
 start_date = '2022-01-01'
-end_date = '2023-04-25'
+today = date.today()
+end_date = today - timedelta(days = 1)
 
 # Retrieve historical data for the stock
 stock_data_rel = yf.download(stock_symbol_rel, start=start_date, end=end_date)
