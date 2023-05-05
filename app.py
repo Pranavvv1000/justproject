@@ -18,8 +18,8 @@ stock_symbol_tata = 'TATAMOTORS.NS'
 stock_symbol_icici = 'ICICIBANK.NS'
 stock_symbol_hdfc = 'HDFCBANK.NS'
 stock_symbol_axis = 'AXISBANK.NS'
-start_date = '2022-01-01'
-today = date.today()
+today = datetime.date.today()
+start_date = today - timedelta(days = 30)
 end_date = today - timedelta(days = 1)
 
 # Retrieve historical data for the stock
