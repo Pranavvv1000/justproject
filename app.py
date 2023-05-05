@@ -30,17 +30,17 @@ stock_data_axis = yf.download(stock_symbol_axis, start=start_date, end=end_date)
 stock_data_rel['MA50'] = stock_data_rel['Close'].rolling(window=50).mean()
 stock_data_rel['MA200'] = stock_data_rel['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_tata['MA50'] = stock_data_tata['Close'].rolling(window=50).mean()
-stock_data_tata['MA200'] = stock_data_tata['Close'].rolling(window=200).mean()
+stock_data_tata['PA50'] = stock_data_tata['Close'].rolling(window=50).mean()
+stock_data_tata['PA200'] = stock_data_tata['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_icici['MA50'] = stock_data_icici['Close'].rolling(window=50).mean()
-stock_data_icici['MA200'] = stock_data_icici['Close'].rolling(window=200).mean()
+stock_data_icici['SA50'] = stock_data_icici['Close'].rolling(window=50).mean()
+stock_data_icici['SA200'] = stock_data_icici['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_hdfc['MA50'] = stock_data_hdfc['Close'].rolling(window=50).mean()
-stock_data_hdfc['MA200'] = stock_data_hdfc['Close'].rolling(window=200).mean()
+stock_data_hdfc['NA50'] = stock_data_hdfc['Close'].rolling(window=50).mean()
+stock_data_hdfc['NA200'] = stock_data_hdfc['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_axis['MA50'] = stock_data_axis['Close'].rolling(window=50).mean()
-stock_data_axis['MA200'] = stock_data_axis['Close'].rolling(window=200).mean()
+stock_data_axis['XA50'] = stock_data_axis['Close'].rolling(window=50).mean()
+stock_data_axis['XA200'] = stock_data_axis['Close'].rolling(window=200).mean()
 
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
@@ -140,8 +140,8 @@ def tataplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_tata['Close'])
-    axs[0].plot(stock_data_tata['MA50'])
-    axs[0].plot(stock_data_tata['MA200'])
+    axs[0].plot(stock_data_tata['PA50'])
+    axs[0].plot(stock_data_tata['PA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -179,8 +179,8 @@ def iciciplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_icici['Close'])
-    axs[0].plot(stock_data_icici['MA50'])
-    axs[0].plot(stock_data_icici['MA200'])
+    axs[0].plot(stock_data_icici['SA50'])
+    axs[0].plot(stock_data_icici['SA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -218,8 +218,8 @@ def hdfcplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_hdfc['Close'])
-    axs[0].plot(stock_data_hdfc['MA50'])
-    axs[0].plot(stock_data_hdfc['MA200'])
+    axs[0].plot(stock_data_hdfc['NA50'])
+    axs[0].plot(stock_data_hdfc['NA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -258,8 +258,8 @@ def axisplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_axis['Close'])
-    axs[0].plot(stock_data_axis['MA50'])
-    axs[0].plot(stock_data_axis['MA200'])
+    axs[0].plot(stock_data_axis['XA50'])
+    axs[0].plot(stock_data_axis['XA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
