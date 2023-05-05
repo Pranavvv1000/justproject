@@ -30,8 +30,8 @@ stock_data_axis = yf.download(stock_symbol_axis, start=start_date, end=end_date)
 stock_data_rel['MA50'] = stock_data_rel['Close'].rolling(window=50).mean()
 stock_data_rel['MA200'] = stock_data_rel['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_tata['PA50'] = stock_data_tata['Close1'].rolling(window=50).mean()
-stock_data_tata['PA200'] = stock_data_tata['Close1'].rolling(window=200).mean()
+stock_data_tata['PA50'] = stock_data_tata['Closee'].rolling(window=50).mean()
+stock_data_tata['PA200'] = stock_data_tata['Closee'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
 stock_data_icici['SA50'] = stock_data_icici['Close2'].rolling(window=50).mean()
 stock_data_icici['SA200'] = stock_data_icici['Close2'].rolling(window=200).mean()
@@ -77,7 +77,7 @@ def calculate_technical_indicators(data):
 
 
 def calculate_technical_indicators1(data):
-    delta = data['Close1'].diff()
+    delta = data['Closee'].diff()
     delta = delta[1:]
 
     up = delta.copy()
@@ -92,8 +92,8 @@ def calculate_technical_indicators1(data):
     RS = AVG_Gain/AVG_Loss
     RSI = 100.0 - (100.0 / (1.0 + RS))
 
-    exp1 = data['Close1'].ewm(span=12, adjust=False).mean()
-    exp2 = data['Close1'].ewm(span=26, adjust=False).mean()
+    exp1 = data['Closee'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Closee'].ewm(span=26, adjust=False).mean()
 
     MACD = exp1 - exp2
     signal = MACD.ewm(span=9, adjust=False).mean()
@@ -236,11 +236,11 @@ def tatamotors():
     
     
     output = ""
-    if stock_data_tata['Close1'][-1] > stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] > stock_data_tata['PA200'][-1]:
+    if stock_data_tata['Closee'][-1] > stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] > stock_data_tata['PA200'][-1]:
         output += f"Tatamotors is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_tata['Close1'][-1] < stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] < stock_data_tata['PA200'][-1]:
+    elif stock_data_tata['Closee'][-1] < stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] < stock_data_tata['PA200'][-1]:
         output += f"Tatamotors is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -253,7 +253,7 @@ def tataplot_png():
     
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
-    axs[0].plot(stock_data_tata['Close1'])
+    axs[0].plot(stock_data_tata['Closee'])
     axs[0].plot(stock_data_tata['PA50'])
     axs[0].plot(stock_data_tata['PA200'])
     axs[0].set_title('Stock Price')
