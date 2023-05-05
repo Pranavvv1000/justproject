@@ -1,5 +1,8 @@
 #!/bin/bash
 
 python -m pip install --upgrade pip
-
-pip install -r requirement.txt
+pip3 install flask
+pip3 install --upgrade Flask
+pip3 install yfinance
+pip3 install Figure
+pip3 install matplotlib
