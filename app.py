@@ -190,8 +190,8 @@ def calculate_technical_indicators4(data):
     return RSI, MACD, signal
 
 
-RSI, MACD, signal = calculate_technical_indicators(stock_data_rel)
-RSI, MACD, signal = calculate_technical_indicators1(stock_data_tata)
+RSI_rel, MACD_rel, signal_rel = calculate_technical_indicators(stock_data_rel)
+RSI_tata, MACD_tata, signal_tata = calculate_technical_indicators1(stock_data_tata)
 RSI, MACD, signal = calculate_technical_indicators2(stock_data_icici)
 RSI, MACD, signal = calculate_technical_indicators3(stock_data_hdfc)
 RSI, MACD, signal = calculate_technical_indicators4(stock_data_axis)
@@ -222,10 +222,10 @@ def relplot_png():
     axs[0].plot(stock_data_rel['MA50'])
     axs[0].plot(stock_data_rel['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_rel)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_rel)
+    axs[2].plot(signal_rel)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -260,10 +260,10 @@ def tataplot_png():
     axs[0].plot(stock_data_tata['PA50'])
     axs[0].plot(stock_data_tata['PA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_tata)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_tata)
+    axs[2].plot(signal_tata)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
