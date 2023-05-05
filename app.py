@@ -200,18 +200,18 @@ RSI_axis, MACD_axis, signal_axis = calculate_technical_indicators4(stock_data_ax
 @app.route('/reliance')
 def reliance():
     
-    output = ""
+    output_rel = ""
     if stock_data_rel['Close'][-1] > stock_data_rel['MA50'][-1] and stock_data_rel['MA50'][-1] > stock_data_rel['MA200'][-1]:
-        output += f"RELIANCE is currently in an uptrend or in bullish Market.In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak."
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_rel += f"RELIANCE is currently in an uptrend or in bullish Market.In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak."
+        output_rel += "Tip:This is only Suggestion,Invest on your own Risk."
 
     elif stock_data_rel['Close'][-1] < stock_data_rel['MA50'][-1] and stock_data_rel['MA50'][-1] < stock_data_rel['MA200'][-1]:
-        output += f"RELIANCE is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_rel += f"RELIANCE is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
+        output_rel += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
-        output += f"RELIANCE is currently in a sideways trend. When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
-    return output
+        output_rel += f"RELIANCE is currently in a sideways trend. When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
+        output_rel += "Tip:This is only Suggestion,Invest on your own Risk."
+    return output_rel
 
 @app.route('/relplot_png.png')
 def relplot_png():
@@ -238,18 +238,18 @@ def relplot_png():
 def tatamotors():
     
     
-    output = ""
+    output_tata = ""
     if stock_data_tata['Close'][-1] > stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] > stock_data_tata['MA200'][-1]:
-        output += f"Tatamotors is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_tata += f"Tatamotors is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
+        output_tata += "Tip:This is only Suggestion,Invest on your own Risk."
 
     elif stock_data_tata['Close'][-1] < stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] < stock_data_tata['MA200'][-1]:
-        output += f"Tatamotors is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_tata += f"Tatamotors is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
+        output_tata += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
-        output += f"Tatamotors is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
-    return output
+        output_tata += f"Tatamotors is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
+        output_tata += "Tip:This is only Suggestion,Invest on your own Risk."
+    return output_tata
 
 @app.route('/tataplot_png.png')
 def tataplot_png():
@@ -276,18 +276,18 @@ def tataplot_png():
 def ICICI():
     
     
-    output = ""
+    output_icici = ""
     if stock_data_icici['Close'][-1] > stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] > stock_data_icici['MA200'][-1]:
-        output += f"ICICIBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_icici += f"ICICIBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
+        output_icici += "Tip:This is only Suggestion,Invest on your own Risk."
 
     elif stock_data_icici['Close'][-1] < stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] < stock_data_icici['MA200'][-1]:
-        output += f"ICICIBANK is currently in a downtrend or in Bearish Market. Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_icici += f"ICICIBANK is currently in a downtrend or in Bearish Market. Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
+        output_icici += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
-        output += f"ICICIBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
-    return output
+        output_icici += f"ICICIBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
+        output_icici += "Tip:This is only Suggestion,Invest on your own Risk."
+    return output_icici
 
 @app.route('/iciciplot_png.png')
 def iciciplot_png():
@@ -315,18 +315,18 @@ def iciciplot_png():
 def hdfcbank():
     
     
-    output = ""
+    output_hdfc = ""
     if stock_data_hdfc['Close'][-1] > stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] > stock_data_hdfc['MA200'][-1]:
-        output += f"HDFCBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_hdfc += f"HDFCBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
+        output_hdfc += "Tip:This is only Suggestion,Invest on your own Risk."
 
     elif stock_data_hdfc['Close'][-1] < stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] < stock_data_hdfc['MA200'][-1]:
-        output += f"HDFCBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_hdfc += f"HDFCBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
+        output_hdfc += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
-        output += f"HDFCBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
-    return output
+        output_hdfc += f"HDFCBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
+        output_hdfc += "Tip:This is only Suggestion,Invest on your own Risk."
+    return output_hdfc
 
 @app.route('/hdfcplot_png.png')
 def hdfcplot_png():
@@ -355,18 +355,18 @@ def hdfcplot_png():
 def axisbank():
     
     
-    output = ""
+    output_axis = ""
     if stock_data_axis['Close'][-1] > stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] > stock_data_axis['MA200'][-1]:
-        output += f"AXISBANK is currently in an uptrend or in bullish Market. In a bull market, The ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_axis += f"AXISBANK is currently in an uptrend or in bullish Market. In a bull market, The ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
+        output_axis += "Tip:This is only Suggestion,Invest on your own Risk."
 
     elif stock_data_axis['Close'][-1] < stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] < stock_data_axis['MA200'][-1]:
-        output += f"AXISBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
+        output_axis += f"AXISBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
+        output_axis += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
-        output += f"AXISBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
-        output += "Tip:This is only Suggestion,Invest on your own Risk."
-    return output
+        output_axis += f"AXISBANK is currently in a sideways trend.When analyzing sideways trends, traders should look at other technical indicators and chart patterns to provide an indicator of where the price may be headed and when a breakout or breakdown may be likely to occur.\n"
+        output_axis += "Tip:This is only Suggestion,Invest on your own Risk."
+    return output_axis
 
 @app.route('/axisplot_png.png')
 def axisplot_png():
