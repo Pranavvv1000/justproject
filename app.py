@@ -7,7 +7,7 @@ from io import BytesIO
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import io
-from datetime import datetime
+from datetime import date
 from datetime import timedelta
 
 app = Flask(__name__)
@@ -18,7 +18,7 @@ stock_symbol_tata = 'TATAMOTORS.NS'
 stock_symbol_icici = 'ICICIBANK.NS'
 stock_symbol_hdfc = 'HDFCBANK.NS'
 stock_symbol_axis = 'AXISBANK.NS'
-today = datetime.date.today()
+today = date.today()
 start_date = today - timedelta(days = 30)
 end_date = today - timedelta(days = 1)
 
