@@ -30,17 +30,17 @@ stock_data_axis = yf.download(stock_symbol_axis, start=start_date, end=end_date)
 stock_data_rel['MA50'] = stock_data_rel['Close'].rolling(window=50).mean()
 stock_data_rel['MA200'] = stock_data_rel['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_tata['PA50'] = stock_data_tata['Close'].rolling(window=50).mean()
-stock_data_tata['PA200'] = stock_data_tata['Close'].rolling(window=200).mean()
+stock_data_tata['PA50'] = stock_data_tata['Close1'].rolling(window=50).mean()
+stock_data_tata['PA200'] = stock_data_tata['Close1'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_icici['SA50'] = stock_data_icici['Close'].rolling(window=50).mean()
-stock_data_icici['SA200'] = stock_data_icici['Close'].rolling(window=200).mean()
+stock_data_icici['SA50'] = stock_data_icici['Close2'].rolling(window=50).mean()
+stock_data_icici['SA200'] = stock_data_icici['Close2'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_hdfc['NA50'] = stock_data_hdfc['Close'].rolling(window=50).mean()
-stock_data_hdfc['NA200'] = stock_data_hdfc['Close'].rolling(window=200).mean()
+stock_data_hdfc['NA50'] = stock_data_hdfc['Close3'].rolling(window=50).mean()
+stock_data_hdfc['NA200'] = stock_data_hdfc['Close3'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_axis['XA50'] = stock_data_axis['Close'].rolling(window=50).mean()
-stock_data_axis['XA200'] = stock_data_axis['Close'].rolling(window=200).mean()
+stock_data_axis['XA50'] = stock_data_axis['Close4'].rolling(window=50).mean()
+stock_data_axis['XA200'] = stock_data_axis['Close4'].rolling(window=200).mean()
 
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
@@ -70,14 +70,128 @@ def calculate_technical_indicators(data):
     return RSI, MACD, signal
 
 
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators1(data):
+    delta = data['Close1'].diff()
+    delta = delta[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close1'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close1'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators2(data):
+    delta = data['Close2'].diff()
+    delta = delta[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close2'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close2'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators3(data):
+    delta = data['Close3'].diff()
+    delta = delta[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close3'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close3'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators4(data):
+    delta = data['Close4'].diff()
+    delta = delta[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close4'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close4'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
 RSI, MACD, signal = calculate_technical_indicators(stock_data_rel)
-RSI, MACD, signal = calculate_technical_indicators(stock_data_tata)
-RSI, MACD, signal = calculate_technical_indicators(stock_data_icici)
-RSI, MACD, signal = calculate_technical_indicators(stock_data_hdfc)
-RSI, MACD, signal = calculate_technical_indicators(stock_data_axis)
-
-
-
+RSI, MACD, signal = calculate_technical_indicators1(stock_data_tata)
+RSI, MACD, signal = calculate_technical_indicators2(stock_data_icici)
+RSI, MACD, signal = calculate_technical_indicators3(stock_data_hdfc)
+RSI, MACD, signal = calculate_technical_indicators4(stock_data_axis)
 
 
 @app.route('/reliance')
@@ -122,11 +236,11 @@ def tatamotors():
     
     
     output = ""
-    if stock_data_tata['Close'][-1] > stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] > stock_data_tata['MA200'][-1]:
+    if stock_data_tata['Close1'][-1] > stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] > stock_data_tata['PA200'][-1]:
         output += f"Tatamotors is currently in an uptrend or in bullish Market, We suggest to Buy this stock now for short Range \n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_tata['Close'][-1] < stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] < stock_data_tata['MA200'][-1]:
+    elif stock_data_tata['Close1'][-1] < stock_data_tata['PA50'][-1] and stock_data_tata['PA50'][-1] < stock_data_tata['PA200'][-1]:
         output += f"Tatamotors is currently in a downtrend or in Bearish Market You can Buy at lowest price.\n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -139,7 +253,7 @@ def tataplot_png():
     
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
-    axs[0].plot(stock_data_tata['Close'])
+    axs[0].plot(stock_data_tata['Close1'])
     axs[0].plot(stock_data_tata['PA50'])
     axs[0].plot(stock_data_tata['PA200'])
     axs[0].set_title('Stock Price')
@@ -160,11 +274,11 @@ def ICICI():
     
     
     output = ""
-    if stock_data_icici['Close'][-1] > stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] > stock_data_icici['MA200'][-1]:
+    if stock_data_icici['Close2'][-1] > stock_data_icici['SA50'][-1] and stock_data_icici['SA50'][-1] > stock_data_icici['SA200'][-1]:
         output += f"ICICIBANK is currently in an uptrend or in bullish Market, We suggest to Buy this stock now for short Range \n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_icici['Close'][-1] < stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] < stock_data_icici['MA200'][-1]:
+    elif stock_data_icici['Close2'][-1] < stock_data_icici['SA50'][-1] and stock_data_icici['SA50'][-1] < stock_data_icici['SA200'][-1]:
         output += f"ICICIBANK is currently in a downtrend or in Bearish Market You can Buy at lowest price.\n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -178,7 +292,7 @@ def iciciplot_png():
 
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
-    axs[0].plot(stock_data_icici['Close'])
+    axs[0].plot(stock_data_icici['Close2'])
     axs[0].plot(stock_data_icici['SA50'])
     axs[0].plot(stock_data_icici['SA200'])
     axs[0].set_title('Stock Price')
@@ -199,11 +313,11 @@ def hdfcbank():
     
     
     output = ""
-    if stock_data_hdfc['Close'][-1] > stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] > stock_data_hdfc['MA200'][-1]:
+    if stock_data_hdfc['Close3'][-1] > stock_data_hdfc['NA50'][-1] and stock_data_hdfc['NA50'][-1] > stock_data_hdfc['NA200'][-1]:
         output += f"HDFCBANK is currently in an uptrend or in bullish Market, We suggest to Buy this stock now for short Range \n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_hdfc['Close'][-1] < stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] < stock_data_hdfc['MA200'][-1]:
+    elif stock_data_hdfc['Close3'][-1] < stock_data_hdfc['NA50'][-1] and stock_data_hdfc['NA50'][-1] < stock_data_hdfc['NA200'][-1]:
         output += f"HDFCBANK is currently in a downtrend or in Bearish Market You can Buy at lowest price.\n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -217,7 +331,7 @@ def hdfcplot_png():
 
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
-    axs[0].plot(stock_data_hdfc['Close'])
+    axs[0].plot(stock_data_hdfc['Close3'])
     axs[0].plot(stock_data_hdfc['NA50'])
     axs[0].plot(stock_data_hdfc['NA200'])
     axs[0].set_title('Stock Price')
@@ -239,11 +353,11 @@ def axisbank():
     
     
     output = ""
-    if stock_data_axis['Close'][-1] > stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] > stock_data_axis['MA200'][-1]:
+    if stock_data_axis['Close4'][-1] > stock_data_axis['XA50'][-1] and stock_data_axis['XA50'][-1] > stock_data_axis['XA200'][-1]:
         output += f"AXISBANK is currently in an uptrend or in bullish Market, We suggest to Buy this stock now for short Range \n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_axis['Close'][-1] < stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] < stock_data_axis['MA200'][-1]:
+    elif stock_data_axis['Close4'][-1] < stock_data_axis['XA50'][-1] and stock_data_axis['XA50'][-1] < stock_data_axis['XA200'][-1]:
         output += f"AXISBANK is currently in a downtrend or in Bearish Market You can Buy at lowest price.\n"
         output += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -257,7 +371,7 @@ def axisplot_png():
 
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
-    axs[0].plot(stock_data_axis['Close'])
+    axs[0].plot(stock_data_axis['Close4'])
     axs[0].plot(stock_data_axis['XA50'])
     axs[0].plot(stock_data_axis['XA200'])
     axs[0].set_title('Stock Price')
