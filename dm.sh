@@ -6,3 +6,4 @@ pip3 install --upgrade Flask
 pip3 install yfinance
 pip3 install Figure
 pip3 install matplotlib
+pip3 install gunicorn
