@@ -66,8 +66,8 @@ def calculate_technical_indicators(data):
     RS_rel = AVG_Gain_rel/AVG_Loss_rel
     RSI_rel = 100.0 - (100.0 / (1.0 + RS_rel))
 
-    exp1_rel = data_rel['Close'].ewm(span=12, adjust=False).mean()
-    exp2_rel = data_rel['Close'].ewm(span=26, adjust=False).mean()
+    exp1_rel = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2_rel = data['Close'].ewm(span=26, adjust=False).mean()
 
     MACD_rel = exp1_rel - exp2_rel
     signal_rel = MACD_rel.ewm(span=9, adjust=False).mean()
@@ -97,8 +97,8 @@ def calculate_technical_indicators1(data):
     RS_tata = AVG_Gain_tata/AVG_Loss_tata
     RSI_tata = 100.0 - (100.0 / (1.0 + RS_tata))
 
-    exp1_tata = data_tata['Close'].ewm(span=12, adjust=False).mean()
-    exp2_tata = data_tata['Close'].ewm(span=26, adjust=False).mean()
+    exp1_tata = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2_tata = data['Close'].ewm(span=26, adjust=False).mean()
 
     MACD_tata = exp1_tata - exp2_tata
     signal_tata = MACD_tata.ewm(span=9, adjust=False).mean()
