@@ -277,11 +277,11 @@ def ICICI():
     
     
     output_icici = ""
-    if stock_data_icici['Close'][-1] > stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] > stock_data_icici['MA200'][-1]:
+    if stock_data_icici['Close'][-1] > stock_data_icici['i_MA50'][-1] and stock_data_icici['i_MA50'][-1] > stock_data_icici['i_MA200'][-1]:
         output_icici += f"ICICIBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
         output_icici += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_icici['Close'][-1] < stock_data_icici['MA50'][-1] and stock_data_icici['MA50'][-1] < stock_data_icici['MA200'][-1]:
+    elif stock_data_icici['Close'][-1] < stock_data_icici['i_MA50'][-1] and stock_data_icici['i_MA50'][-1] < stock_data_icici['i_MA200'][-1]:
         output_icici += f"ICICIBANK is currently in a downtrend or in Bearish Market. Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output_icici += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -296,8 +296,8 @@ def iciciplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_icici['Close'])
-    axs[0].plot(stock_data_icici['MA50'])
-    axs[0].plot(stock_data_icici['MA200'])
+    axs[0].plot(stock_data_icici['i_MA50'])
+    axs[0].plot(stock_data_icici['i_MA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI_icici)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -316,11 +316,11 @@ def hdfcbank():
     
     
     output_hdfc = ""
-    if stock_data_hdfc['Close'][-1] > stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] > stock_data_hdfc['MA200'][-1]:
+    if stock_data_hdfc['Close'][-1] > stock_data_hdfc['h_MA50'][-1] and stock_data_hdfc['h_MA50'][-1] > stock_data_hdfc['h_MA200'][-1]:
         output_hdfc += f"HDFCBANK is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
         output_hdfc += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_hdfc['Close'][-1] < stock_data_hdfc['MA50'][-1] and stock_data_hdfc['MA50'][-1] < stock_data_hdfc['MA200'][-1]:
+    elif stock_data_hdfc['Close'][-1] < stock_data_hdfc['h_MA50'][-1] and stock_data_hdfc['h_MA50'][-1] < stock_data_hdfc['h_MA200'][-1]:
         output_hdfc += f"HDFCBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output_hdfc += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -335,8 +335,8 @@ def hdfcplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_hdfc['Close'])
-    axs[0].plot(stock_data_hdfc['MA50'])
-    axs[0].plot(stock_data_hdfc['MA200'])
+    axs[0].plot(stock_data_hdfc['h_MA50'])
+    axs[0].plot(stock_data_hdfc['h_MA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI_hdfc)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -356,11 +356,11 @@ def axisbank():
     
     
     output_axis = ""
-    if stock_data_axis['Close'][-1] > stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] > stock_data_axis['MA200'][-1]:
+    if stock_data_axis['Close'][-1] > stock_data_axis['a_MA50'][-1] and stock_data_axis['a_MA50'][-1] > stock_data_axis['a_MA200'][-1]:
         output_axis += f"AXISBANK is currently in an uptrend or in bullish Market. In a bull market, The ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
         output_axis += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_axis['Close'][-1] < stock_data_axis['MA50'][-1] and stock_data_axis['MA50'][-1] < stock_data_axis['MA200'][-1]:
+    elif stock_data_axis['Close'][-1] < stock_data_axis['a_MA50'][-1] and stock_data_axis['a_MA50'][-1] < stock_data_axis['a_MA200'][-1]:
         output_axis += f"AXISBANK is currently in a downtrend or in Bearish Market Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output_axis += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -375,8 +375,8 @@ def axisplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_axis['Close'])
-    axs[0].plot(stock_data_axis['MA50'])
-    axs[0].plot(stock_data_axis['MA200'])
+    axs[0].plot(stock_data_axis['a_MA50'])
+    axs[0].plot(stock_data_axis['a_MA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI_axis)
     axs[1].set_title('Relative Strength Index (RSI)')
