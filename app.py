@@ -30,20 +30,20 @@ stock_data_hdfc = yf.download(stock_symbol_hdfc, start=start_date, end=end_date)
 stock_data_axis = yf.download(stock_symbol_axis, start=start_date, end=end_date)
 
 # Calculate moving averages for 50 and 200 days
-stock_data_rel['MA50'] = stock_data_rel['Close'].rolling(window=50).mean()
-stock_data_rel['MA200'] = stock_data_rel['Close'].rolling(window=200).mean()
+stock_data_rel['r_MA50'] = stock_data_rel['Close'].rolling(window=50).mean()
+stock_data_rel['r_MA200'] = stock_data_rel['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_tata['MA50'] = stock_data_tata['Close'].rolling(window=50).mean()
-stock_data_tata['MA200'] = stock_data_tata['Close'].rolling(window=200).mean()
+stock_data_tata['t_MA50'] = stock_data_tata['Close'].rolling(window=50).mean()
+stock_data_tata['t_MA200'] = stock_data_tata['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_icici['MA50'] = stock_data_icici['Close'].rolling(window=50).mean()
-stock_data_icici['MA200'] = stock_data_icici['Close'].rolling(window=200).mean()
+stock_data_icici['i_MA50'] = stock_data_icici['Close'].rolling(window=50).mean()
+stock_data_icici['i_MA200'] = stock_data_icici['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_hdfc['MA50'] = stock_data_hdfc['Close'].rolling(window=50).mean()
-stock_data_hdfc['MA200'] = stock_data_hdfc['Close'].rolling(window=200).mean()
+stock_data_hdfc['h_MA50'] = stock_data_hdfc['Close'].rolling(window=50).mean()
+stock_data_hdfc['h_MA200'] = stock_data_hdfc['Close'].rolling(window=200).mean()
 # Calculate moving averages for 50 and 200 days
-stock_data_axis['MA50'] = stock_data_axis['Close'].rolling(window=50).mean()
-stock_data_axis['MA200'] = stock_data_axis['Close'].rolling(window=200).mean()
+stock_data_axis['a_MA50'] = stock_data_axis['Close'].rolling(window=50).mean()
+stock_data_axis['a_MA200'] = stock_data_axis['Close'].rolling(window=200).mean()
 
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
@@ -201,11 +201,11 @@ RSI_axis, MACD_axis, signal_axis = calculate_technical_indicators4(stock_data_ax
 def reliance():
     
     output_rel = ""
-    if stock_data_rel['Close'][-1] > stock_data_rel['MA50'][-1] and stock_data_rel['MA50'][-1] > stock_data_rel['MA200'][-1]:
+    if stock_data_rel['Close'][-1] > stock_data_rel['r_MA50'][-1] and stock_data_rel['r_MA50'][-1] > stock_data_rel['r_MA200'][-1]:
         output_rel += f"RELIANCE is currently in an uptrend or in bullish Market.In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak."
         output_rel += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_rel['Close'][-1] < stock_data_rel['MA50'][-1] and stock_data_rel['MA50'][-1] < stock_data_rel['MA200'][-1]:
+    elif stock_data_rel['Close'][-1] < stock_data_rel['r_MA50'][-1] and stock_data_rel['r_MA50'][-1] < stock_data_rel['r_MA200'][-1]:
         output_rel += f"RELIANCE is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output_rel += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -219,8 +219,8 @@ def relplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_rel['Close'])
-    axs[0].plot(stock_data_rel['MA50'])
-    axs[0].plot(stock_data_rel['MA200'])
+    axs[0].plot(stock_data_rel['r_MA50'])
+    axs[0].plot(stock_data_rel['r_MA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI_rel)
     axs[1].set_title('Relative Strength Index (RSI)')
@@ -239,11 +239,11 @@ def tatamotors():
     
     
     output_tata = ""
-    if stock_data_tata['Close'][-1] > stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] > stock_data_tata['MA200'][-1]:
+    if stock_data_tata['Close'][-1] > stock_data_tata['t_MA50'][-1] and stock_data_tata['t_MA50'][-1] > stock_data_tata['t_MA200'][-1]:
         output_tata += f"Tatamotors is currently in an uptrend or in bullish Market, In a bull market, the ideal thing for an investor to do is to take advantage of rising prices by buying stocks early in the trend (if possible) and then selling them when they have reached their peak. \n"
         output_tata += "Tip:This is only Suggestion,Invest on your own Risk."
 
-    elif stock_data_tata['Close'][-1] < stock_data_tata['MA50'][-1] and stock_data_tata['MA50'][-1] < stock_data_tata['MA200'][-1]:
+    elif stock_data_tata['Close'][-1] < stock_data_tata['t_MA50'][-1] and stock_data_tata['t_MA50'][-1] < stock_data_tata['t_MA200'][-1]:
         output_tata += f"Tatamotors is currently in a downtrend or in Bearish Market.Invest for the long term Smart investors understand that the stock market is cyclical and that bear markets are a natural part of the cycle. Therefore, they focus on the long-term outlook for their investments rather than short-term fluctuations in stock prices.\n"
         output_tata += "Tip:This is only Suggestion,Invest on your own Risk."
     else:
@@ -257,8 +257,8 @@ def tataplot_png():
     # Create plot
     fig, axs = plt.subplots(3, sharex=True, figsize=(15, 15))
     axs[0].plot(stock_data_tata['Close'])
-    axs[0].plot(stock_data_tata['MA50'])
-    axs[0].plot(stock_data_tata['MA200'])
+    axs[0].plot(stock_data_tata['t_MA50'])
+    axs[0].plot(stock_data_tata['t_MA200'])
     axs[0].set_title('Stock Price')
     axs[1].plot(RSI_tata)
     axs[1].set_title('Relative Strength Index (RSI)')
