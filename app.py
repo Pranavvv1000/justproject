@@ -19,7 +19,7 @@ stock_symbol_icici = 'ICICIBANK.NS'
 stock_symbol_hdfc = 'HDFCBANK.NS'
 stock_symbol_axis = 'AXISBANK.NS'
 today = date.today()
-start_date = today - timedelta(days = 30)
+start_date = today - timedelta(days = 90)
 end_date = today - timedelta(days = 1)
 
 # Retrieve historical data for the stock
