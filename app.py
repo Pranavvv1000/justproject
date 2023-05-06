@@ -125,8 +125,8 @@ def calculate_technical_indicators2(data):
     RS_icici = AVG_Gain_icici/AVG_Loss_icici
     RSI_icici = 100.0 - (100.0 / (1.0 + RS_icici))
 
-    exp1_icici = data_icici['Close'].ewm(span=12, adjust=False).mean()
-    exp2_icici = data_icici['Close'].ewm(span=26, adjust=False).mean()
+    exp1_icici = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2_icici = data['Close'].ewm(span=26, adjust=False).mean()
 
     MACD_icici = exp1_icici - exp2_icici
     signal_icici = MACD_icici.ewm(span=9, adjust=False).mean()
@@ -138,8 +138,8 @@ def calculate_technical_indicators2(data):
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
 
-def calculate_technical_indicators3(data_hdfc):
-    delta_hdfc = data_hdfc['Close'].diff()
+def calculate_technical_indicators3(data):
+    delta_hdfc = data['Close'].diff()
     delta_hdfc = delta_hdfc[1:]
 
     up_hdfc = delta_hdfc.copy()
@@ -154,8 +154,8 @@ def calculate_technical_indicators3(data_hdfc):
     RS_hdfc = AVG_Gain_hdfc/AVG_Loss_hdfc
     RSI_hdfc = 100.0 - (100.0 / (1.0 + RS_hdfc))
 
-    exp1_hdfc = data_hdfc['Close'].ewm(span=12, adjust=False).mean()
-    exp2_hdfc = data_hdfc['Close'].ewm(span=26, adjust=False).mean()
+    exp1_hdfc = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2_hdfc = data['Close'].ewm(span=26, adjust=False).mean()
 
     MACD_hdfc = exp1_hdfc - exp2_hdfc
     signal_hdfc = MACD_hdfc.ewm(span=9, adjust=False).mean()
@@ -167,8 +167,8 @@ def calculate_technical_indicators3(data_hdfc):
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
 
-def calculate_technical_indicators4(data_axis):
-    delta_axis = data_axis['Close'].diff()
+def calculate_technical_indicators4(data):
+    delta_axis = data['Close'].diff()
     delta_axis = delta_axis[1:]
 
     up_axis = delta_axis.copy()
@@ -183,8 +183,8 @@ def calculate_technical_indicators4(data_axis):
     RS_axis = AVG_Gain_axis/AVG_Loss_axis
     RSI_axis = 100.0 - (100.0 / (1.0 + RS_axis))
 
-    exp1_axis = data_axis['Close'].ewm(span=12, adjust=False).mean()
-    exp2_axis = data_axis['Close'].ewm(span=26, adjust=False).mean()
+    exp1_axis = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2_axis = data['Close'].ewm(span=26, adjust=False).mean()
 
     MACD_axis = exp1_axis - exp2_axis
     signal_axis = MACD_axis.ewm(span=9, adjust=False).mean()
