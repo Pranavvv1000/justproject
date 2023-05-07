@@ -18,11 +18,10 @@ stock_symbol_tata = 'TATAMOTORS.NS'
 stock_symbol_icici = 'ICICIBANK.NS'
 stock_symbol_hdfc = 'HDFCBANK.NS'
 stock_symbol_axis = 'AXISBANK.NS'
-# today = date.today()
-# start_date = today - timedelta(days = 90)
-# end_date = today - timedelta(days = 1)
-start_date = '2023-01-01'
-end_date = '2023-05-05'
+today = date.today()
+start_date = today - timedelta(days = 90)
+end_date = today - timedelta(days = 1)
+
 
 # Retrieve historical data for the stock
 stock_data_rel = yf.download(stock_symbol_rel, start=start_date, end=end_date)
@@ -50,30 +49,118 @@ stock_data_axis['MA200'] = stock_data_axis['Close'].rolling(window=200).mean()
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
 
-def calculate_technical_indicators(data):
-    delta_rel = data['Close'].diff()
-    delta_rel = delta_rel[1:]
+def calculate_technical_indicators_rel(data):
+    delta = data['Close'].diff()
+    delta= delta_rel[1:]
 
-    up_rel = delta_rel.copy()
-    up_rel[up_rel < 0] = 0
+    up = delta.copy()
+    up[up < 0] = 0
 
-    down_rel = delta_rel.copy()
-    down_rel[down_rel > 0] = 0
+    down = delta.copy()
+    down[down > 0] = 0
 
-    AVG_Gain_rel = up_rel.rolling(window=14).mean()
-    AVG_Loss_rel = abs(down_rel.rolling(window=14).mean())
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
 
-    RS_rel = AVG_Gain_rel/AVG_Loss_rel
-    RSI_rel = 100.0 - (100.0 / (1.0 + RS_rel))
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
 
-    exp1_rel = data['Close'].ewm(span=12, adjust=False).mean()
-    exp2_rel = data['Close'].ewm(span=26, adjust=False).mean()
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD_rel = exp1_rel - exp2_rel
-    signal_rel = MACD_rel.ewm(span=9, adjust=False).mean()
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
 
-    return RSI_rel, MACD_rel, signal_rel
+    return RSI, MACD, signal
 
+
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators_tata(data):
+    delta = data['Close'].diff()
+    delta= delta_rel[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators_icici(data):
+    delta = data['Close'].diff()
+    delta= delta_rel[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
+
+
+
+# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
+
+
+def calculate_technical_indicators_hdfc(data):
+    delta = data['Close'].diff()
+    delta= delta_rel[1:]
+
+    up = delta.copy()
+    up[up < 0] = 0
+
+    down = delta.copy()
+    down[down > 0] = 0
+
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
+
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
+
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
+
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
+
+    return RSI, MACD, signal
 
 
 
@@ -81,122 +168,37 @@ def calculate_technical_indicators(data):
 # Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
 
 
-def calculate_technical_indicators1(data):
-    delta_tata = data['Close'].diff()
-    delta_tata = delta_tata[1:]
+def calculate_technical_indicators_axis(data):
+    delta = data['Close'].diff()
+    delta= delta_rel[1:]
 
-    up_tata = delta_tata.copy()
-    up_tata[up_tata < 0] = 0
+    up = delta.copy()
+    up[up < 0] = 0
 
-    down_tata = delta_tata.copy()
-    down_tata[down_tata > 0] = 0
+    down = delta.copy()
+    down[down > 0] = 0
 
-    AVG_Gain_tata = up_tata.rolling(window=14).mean()
-    AVG_Loss_tata = abs(down_tata.rolling(window=14).mean())
+    AVG_Gain = up.rolling(window=14).mean()
+    AVG_Loss = abs(down.rolling(window=14).mean())
 
-    RS_tata = AVG_Gain_tata/AVG_Loss_tata
-    RSI_tata = 100.0 - (100.0 / (1.0 + RS_tata))
+    RS = AVG_Gain/AVG_Loss
+    RSI = 100.0 - (100.0 / (1.0 + RS))
 
-    exp1_tata = data['Close'].ewm(span=12, adjust=False).mean()
-    exp2_tata = data['Close'].ewm(span=26, adjust=False).mean()
+    exp1 = data['Close'].ewm(span=12, adjust=False).mean()
+    exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD_tata = exp1_tata - exp2_tata
-    signal_tata = MACD_tata.ewm(span=9, adjust=False).mean()
+    MACD = exp1 - exp2
+    signal = MACD.ewm(span=9, adjust=False).mean()
 
-    return RSI_tata, MACD_tata, signal_tata
-
-
-# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
-
-
-def calculate_technical_indicators2(data):
-    delta_icici = data['Close'].diff()
-    delta_icici = delta_icici[1:]
-
-    up_icici = delta_icici.copy()
-    up_icici[up_icici < 0] = 0
-
-    down_icici = delta_icici.copy()
-    down_icici[down_icici > 0] = 0
-
-    AVG_Gain_icici = up_icici.rolling(window=14).mean()
-    AVG_Loss_icici = abs(down_icici.rolling(window=14).mean())
-
-    RS_icici = AVG_Gain_icici/AVG_Loss_icici
-    RSI_icici = 100.0 - (100.0 / (1.0 + RS_icici))
-
-    exp1_icici = data['Close'].ewm(span=12, adjust=False).mean()
-    exp2_icici = data['Close'].ewm(span=26, adjust=False).mean()
-
-    MACD_icici = exp1_icici - exp2_icici
-    signal_icici = MACD_icici.ewm(span=9, adjust=False).mean()
-
-    return RSI_icici, MACD_icici, signal_icici
+    return RSI, MACD, signal
 
 
 
-# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
-
-
-def calculate_technical_indicators3(data):
-    delta_hdfc = data['Close'].diff()
-    delta_hdfc = delta_hdfc[1:]
-
-    up_hdfc = delta_hdfc.copy()
-    up_hdfc[up_hdfc < 0] = 0
-
-    down_hdfc = delta_hdfc.copy()
-    down_hdfc[down_hdfc > 0] = 0
-
-    AVG_Gain_hdfc = up_hdfc.rolling(window=14).mean()
-    AVG_Loss_hdfc = abs(down_hdfc.rolling(window=14).mean())
-
-    RS_hdfc = AVG_Gain_hdfc/AVG_Loss_hdfc
-    RSI_hdfc = 100.0 - (100.0 / (1.0 + RS_hdfc))
-
-    exp1_hdfc = data['Close'].ewm(span=12, adjust=False).mean()
-    exp2_hdfc = data['Close'].ewm(span=26, adjust=False).mean()
-
-    MACD_hdfc = exp1_hdfc - exp2_hdfc
-    signal_hdfc = MACD_hdfc.ewm(span=9, adjust=False).mean()
-
-    return RSI_hdfc, MACD_hdfc, signal_hdfc
-
-
-
-# Calculate the Relative Strength Index (RSI) and the Moving Average Convergence Divergence (MACD)
-
-
-def calculate_technical_indicators4(data):
-    delta_axis = data['Close'].diff()
-    delta_axis = delta_axis[1:]
-
-    up_axis = delta_axis.copy()
-    up_axis[up_axis < 0] = 0
-
-    down_axis = delta_axis.copy()
-    down_axis[down_axis > 0] = 0
-
-    AVG_Gain_axis = up_axis.rolling(window=14).mean()
-    AVG_Loss_axis = abs(down_axis.rolling(window=14).mean())
-
-    RS_axis = AVG_Gain_axis/AVG_Loss_axis
-    RSI_axis = 100.0 - (100.0 / (1.0 + RS_axis))
-
-    exp1_axis = data['Close'].ewm(span=12, adjust=False).mean()
-    exp2_axis = data['Close'].ewm(span=26, adjust=False).mean()
-
-    MACD_axis = exp1_axis - exp2_axis
-    signal_axis = MACD_axis.ewm(span=9, adjust=False).mean()
-
-    return RSI_axis, MACD_axis, signal_axis
-
-
-RSI_rel, MACD_rel, signal_rel = calculate_technical_indicators(stock_data_rel)
-RSI_tata, MACD_tata, signal_tata = calculate_technical_indicators1(stock_data_tata)
-RSI_icici, MACD_icici, signal_icici = calculate_technical_indicators2(stock_data_icici)
-RSI_hdfc, MACD_hdfc, signal_hdfc = calculate_technical_indicators3(stock_data_hdfc)
-RSI_axis, MACD_axis, signal_axis = calculate_technical_indicators4(stock_data_axis)
+RSI, MACD, signal = calculate_technical_indicators_rel(stock_data_rel)
+RSI, MACD, signal = calculate_technical_indicators_tata(stock_data_tata)
+RSI, MACD, signal = calculate_technical_indicators_icici(stock_data_icici)
+RSI, MACD, signal = calculate_technical_indicators_hdfc(stock_data_hdfc)
+RSI, MACD, signal = calculate_technical_indicators_axis(stock_data_axis)
 
 
 @app.route('/reliance')
