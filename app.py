@@ -51,7 +51,7 @@ stock_data_axis['MA200'] = stock_data_axis['Close'].rolling(window=200).mean()
 
 def calculate_technical_indicators_rel(data):
     delta = data['Close'].diff()
-    delta= delta_rel[1:]
+    delta= delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -82,7 +82,7 @@ def calculate_technical_indicators_rel(data):
 
 def calculate_technical_indicators_tata(data):
     delta = data['Close'].diff()
-    delta= delta_rel[1:]
+    delta= delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -111,7 +111,7 @@ def calculate_technical_indicators_tata(data):
 
 def calculate_technical_indicators_icici(data):
     delta = data['Close'].diff()
-    delta= delta_rel[1:]
+    delta= delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -140,7 +140,7 @@ def calculate_technical_indicators_icici(data):
 
 def calculate_technical_indicators_hdfc(data):
     delta = data['Close'].diff()
-    delta= delta_rel[1:]
+    delta= delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -170,7 +170,7 @@ def calculate_technical_indicators_hdfc(data):
 
 def calculate_technical_indicators_axis(data):
     delta = data['Close'].diff()
-    delta= delta_rel[1:]
+    delta= delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -226,10 +226,10 @@ def relplot_png():
     axs[0].plot(stock_data_rel['MA50'])
     axs[0].plot(stock_data_rel['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI_rel)
+    axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD_rel)
-    axs[2].plot(signal_rel)
+    axs[2].plot(MACD)
+    axs[2].plot(signal)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -264,10 +264,10 @@ def tataplot_png():
     axs[0].plot(stock_data_tata['MA50'])
     axs[0].plot(stock_data_tata['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI_tata)
+    axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD_tata)
-    axs[2].plot(signal_tata)
+    axs[2].plot(MACD)
+    axs[2].plot(signal)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -303,10 +303,10 @@ def iciciplot_png():
     axs[0].plot(stock_data_icici['MA50'])
     axs[0].plot(stock_data_icici['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI_icici)
+    axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD_icici)
-    axs[2].plot(signal_icici)
+    axs[2].plot(MACD)
+    axs[2].plot(signal)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -342,10 +342,10 @@ def hdfcplot_png():
     axs[0].plot(stock_data_hdfc['MA50'])
     axs[0].plot(stock_data_hdfc['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI_hdfc)
+    axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD_hdfc)
-    axs[2].plot(signal_hdfc)
+    axs[2].plot(MACD)
+    axs[2].plot(signal)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -382,10 +382,10 @@ def axisplot_png():
     axs[0].plot(stock_data_axis['MA50'])
     axs[0].plot(stock_data_axis['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI_axis)
+    axs[1].plot(RSI)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD_axis)
-    axs[2].plot(signal_axis)
+    axs[2].plot(MACD)
+    axs[2].plot(signal)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
