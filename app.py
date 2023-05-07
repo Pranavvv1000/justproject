@@ -63,15 +63,15 @@ def calculate_technical_indicators_rel(data):
     AVG_Loss = abs(down.rolling(window=14).mean())
 
     RS = AVG_Gain/AVG_Loss
-    RSI = 100.0 - (100.0 / (1.0 + RS))
+    RSI_rel = 100.0 - (100.0 / (1.0 + RS))
 
     exp1 = data['Close'].ewm(span=12, adjust=False).mean()
     exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD = exp1 - exp2
-    signal = MACD.ewm(span=9, adjust=False).mean()
+    MACD_rel = exp1 - exp2
+    signal_rel = MACD_rel.ewm(span=9, adjust=False).mean()
 
-    return RSI, MACD, signal
+    return RSI_rel, MACD_rel, signal_rel
 
 
 
@@ -94,15 +94,15 @@ def calculate_technical_indicators_tata(data):
     AVG_Loss = abs(down.rolling(window=14).mean())
 
     RS = AVG_Gain/AVG_Loss
-    RSI = 100.0 - (100.0 / (1.0 + RS))
+    RSI_tata = 100.0 - (100.0 / (1.0 + RS))
 
     exp1 = data['Close'].ewm(span=12, adjust=False).mean()
     exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD = exp1 - exp2
-    signal = MACD.ewm(span=9, adjust=False).mean()
+    MACD_tata = exp1 - exp2
+    signal_tata = MACD_tata.ewm(span=9, adjust=False).mean()
 
-    return RSI, MACD, signal
+    return RSI_tata, MACD_tata, signal_tata
 
 
 
@@ -111,7 +111,7 @@ def calculate_technical_indicators_tata(data):
 
 def calculate_technical_indicators_icici(data):
     delta = data['Close'].diff()
-    delta= delta[1:]
+    delta = delta[1:]
 
     up = delta.copy()
     up[up < 0] = 0
@@ -123,15 +123,15 @@ def calculate_technical_indicators_icici(data):
     AVG_Loss = abs(down.rolling(window=14).mean())
 
     RS = AVG_Gain/AVG_Loss
-    RSI = 100.0 - (100.0 / (1.0 + RS))
+    RSI_icici = 100.0 - (100.0 / (1.0 + RS))
 
     exp1 = data['Close'].ewm(span=12, adjust=False).mean()
     exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD = exp1 - exp2
-    signal = MACD.ewm(span=9, adjust=False).mean()
+    MACD_icici = exp1 - exp2
+    signal_icici = MACD_icici.ewm(span=9, adjust=False).mean()
 
-    return RSI, MACD, signal
+    return RSI_icici, MACD_icici, signal_icici
 
 
 
@@ -152,15 +152,15 @@ def calculate_technical_indicators_hdfc(data):
     AVG_Loss = abs(down.rolling(window=14).mean())
 
     RS = AVG_Gain/AVG_Loss
-    RSI = 100.0 - (100.0 / (1.0 + RS))
+    RSI_hdfc = 100.0 - (100.0 / (1.0 + RS))
 
     exp1 = data['Close'].ewm(span=12, adjust=False).mean()
     exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD = exp1 - exp2
-    signal = MACD.ewm(span=9, adjust=False).mean()
+    MACD_hdfc = exp1 - exp2
+    signal_hdfc = MACD_hdfc.ewm(span=9, adjust=False).mean()
 
-    return RSI, MACD, signal
+    return RSI_hdfc, MACD_hdfc, signal_hdfc
 
 
 
@@ -182,23 +182,23 @@ def calculate_technical_indicators_axis(data):
     AVG_Loss = abs(down.rolling(window=14).mean())
 
     RS = AVG_Gain/AVG_Loss
-    RSI = 100.0 - (100.0 / (1.0 + RS))
+    RSI_axis = 100.0 - (100.0 / (1.0 + RS))
 
     exp1 = data['Close'].ewm(span=12, adjust=False).mean()
     exp2 = data['Close'].ewm(span=26, adjust=False).mean()
 
-    MACD = exp1 - exp2
-    signal = MACD.ewm(span=9, adjust=False).mean()
+    MACD_axis = exp1 - exp2
+    signal_axis = MACD_axis.ewm(span=9, adjust=False).mean()
 
-    return RSI, MACD, signal
+    return RSI_axis, MACD_axis, signal_axis
 
 
 
-RSI, MACD, signal = calculate_technical_indicators_rel(stock_data_rel)
-RSI, MACD, signal = calculate_technical_indicators_tata(stock_data_tata)
-RSI, MACD, signal = calculate_technical_indicators_icici(stock_data_icici)
-RSI, MACD, signal = calculate_technical_indicators_hdfc(stock_data_hdfc)
-RSI, MACD, signal = calculate_technical_indicators_axis(stock_data_axis)
+RSI_rel, MACD_rel, signal_rel = calculate_technical_indicators_rel(stock_data_rel)
+RSI_tata, MACD_tata, signal_tata = calculate_technical_indicators_tata(stock_data_tata)
+RSI_icici, MACD_icici, signal_icici = calculate_technical_indicators_icici(stock_data_icici)
+RSI_hdfc, MACD_hdfc, signal_hdfc = calculate_technical_indicators_hdfc(stock_data_hdfc)
+RSI_axis, MACD_axis, signal_axis = calculate_technical_indicators_axis(stock_data_axis)
 
 
 @app.route('/reliance')
@@ -226,10 +226,10 @@ def relplot_png():
     axs[0].plot(stock_data_rel['MA50'])
     axs[0].plot(stock_data_rel['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_rel)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_rel)
+    axs[2].plot(signal_rel)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -264,10 +264,10 @@ def tataplot_png():
     axs[0].plot(stock_data_tata['MA50'])
     axs[0].plot(stock_data_tata['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_tata)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_tata)
+    axs[2].plot(signal_tata)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -303,10 +303,10 @@ def iciciplot_png():
     axs[0].plot(stock_data_icici['MA50'])
     axs[0].plot(stock_data_icici['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_icici)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_icici)
+    axs[2].plot(signal_icici)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -342,10 +342,10 @@ def hdfcplot_png():
     axs[0].plot(stock_data_hdfc['MA50'])
     axs[0].plot(stock_data_hdfc['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_hdfc)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_hdfc)
+    axs[2].plot(signal_hdfc)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
@@ -382,10 +382,10 @@ def axisplot_png():
     axs[0].plot(stock_data_axis['MA50'])
     axs[0].plot(stock_data_axis['MA200'])
     axs[0].set_title('Stock Price')
-    axs[1].plot(RSI)
+    axs[1].plot(RSI_axis)
     axs[1].set_title('Relative Strength Index (RSI)')
-    axs[2].plot(MACD)
-    axs[2].plot(signal)
+    axs[2].plot(MACD_axis)
+    axs[2].plot(signal_axis)
     axs[2].set_title('Moving Average Convergence Divergence (MACD)')
 
     # Save plot to PNG image
